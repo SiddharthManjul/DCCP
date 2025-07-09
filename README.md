@@ -149,6 +149,50 @@ Want a diagram of the DCCP flow or a Go/JS implementation guide?
 
 ---
 
+# 🛰️ DCCP — Distributed Communication Channel Protocol (Go Implementation)
+
+DCCP is a protocol for building secure, censorship-resistant, decentralized communication channels using [libp2p](https://libp2p.io/). This reference implementation in Go enables any two or more peers to establish end-to-end encrypted streams without relying on centralized infrastructure like servers, DNS, or cloud relays.
+
+---
+
+## 📚 Table of Contents
+- [Features](#-features)
+- [Architecture](#-architecture)
+- [Getting Started](#-getting-started)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Development](#-development)
+- [Future Enhancements](#-future-enhancements)
+- [License](#-license)
+- [Contributing](#-contributing)
+
+---
+
+## 🚀 Features
+- ✅ **Peer-to-peer** (no servers)
+- 🔐 **End-to-end encryption**
+- 🌐 **NAT traversal** support
+- 🧭 **Local peer discovery** (mDNS)
+- 📄 **Self-sovereign identities** (libp2p keys)
+- 🧩 **Modular design**
+
+---
+
+## 🏗️ Architecture
+Each DCCP peer:
+1. Generates a libp2p identity (`PeerID`)
+2. Listens on multiple transports (TCP/WebSocket)
+3. Discovers peers via mDNS
+4. Establishes secure streams using `/dccp/1.0.0` protocol
+
+## go
+// Simplified flow
+peer := libp2p.New()
+peer.SetStreamHandler("/dccp/1.0.0", handleStream)
+mdns.NewMdnsService(peer, "dccp-mdns").Start()
+
+---
+
 ## 📎 License
 
 MIT License
